@@ -31,7 +31,7 @@ func main() {
 
 // value of contentType is  "plain" or "html"
 func SwitchServer(subject, contentType, body string) {
-
+	//需要自定义发件人 邮箱 密码 邮件服务器
 	auth := smtp.PlainAuth("", "username@xx.com", "password", "smtp.xxx.net")
 	nickname := "DBA-zhifang.Tang"
 	to := []string{"username@xx.com"}
@@ -45,7 +45,7 @@ func SwitchServer(subject, contentType, body string) {
 	}
 
 }
-
+//实现ping功能，通过调用系统命令ping实现。
 func PingServer() int {
 	cmd := "ping -c 1 10.0.0.43 | grep 'Host Unreachable' | wc -l"
 	bo, err := exec.Command("bash", "-c", cmd).Output()
@@ -61,7 +61,7 @@ func BytesToInt(b []byte) int {
 	binary.Read(bytesBuffer, binary.BigEndian, &tmp)
 	return int(tmp)
 }
-
+//net dial端口，通过net包Dial功能实现。
 func DialServer() int {
 	_, err := net.Dial("tcp", "10.0.0.43:80")
 	if err != nil {
